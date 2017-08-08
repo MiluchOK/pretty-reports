@@ -21,6 +21,14 @@
 <script type="text/jsx">
 
     var TestCard = React.createClass({
+
+        getDefaultProps: function () {
+            return {
+                title: "Unexecuted test.",
+                description: "This test has not been reached by RSpec yet."
+            };
+        },
+        
         render: function() {
 
             var ButtonGroup = ReactBootstrap.ButtonGroup,
@@ -29,7 +37,7 @@
 
             return (<Jumbotron className="test_container">
                 <h1>{this.props.title}</h1>
-                <p>The test info shit</p>
+                <p>{this.props.description}</p>
                 <p><Button bsStyle="primary">Some Cool Action</Button></p>
             </Jumbotron>);
         }
@@ -38,7 +46,7 @@
     var TestsContainer = React.createClass({
         render: function(){
             var testCardsComponents = this.props.testCards.map(function(testCard) {
-                return <TestCard title={testCard.title} />;
+                return <TestCard title={testCard.title} description={testCard.description} />;
             });
             return <div>{testCardsComponents}</div>;
         }

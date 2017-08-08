@@ -13,7 +13,7 @@ class CustomHtmlPrinter
     ugly_js = Closure::Compiler.new.compile(File.open(file_path, 'r'))
     template = Nokogiri::HTML(File.open(input))
     cardsJson = [
-        {title: 'foo'},
+        {},
         {title: 'boo'}
     ].to_json
     template.css('script')[-2].content = "var cards=#{cardsJson}"
