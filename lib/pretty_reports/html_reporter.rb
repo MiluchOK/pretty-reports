@@ -30,20 +30,20 @@ module PrettyReports
     end
 
     def example_group_started(notification)
-      super
-      @example_group_red = false
-      @example_group_number += 1
-
-      @printer.print_example_group_end unless example_group_number == 1
-      @printer.print_example_group_start(example_group_number,
-                                         notification.group.description,
-                                         notification.group.parent_groups.size)
-      @printer.flush
+      # super
+      # @example_group_red = false
+      # @example_group_number += 1
+      #
+      # @printer.print_example_group_end unless example_group_number == 1
+      # @printer.print_example_group_start(example_group_number,
+      #                                    notification.group.description,
+      #                                    notification.group.parent_groups.size)
+      # @printer.flush
     end
 
     def start_dump(_notification)
-      @printer.print_example_group_end
-      @printer.flush
+      # @printer.print_example_group_end
+      # @printer.flush
     end
 
     def example_started(_notification)
@@ -57,41 +57,42 @@ module PrettyReports
     end
 
     def example_failed(failure)
-      @failed_examples << failure.example
-      unless @header_red
-        @header_red = true
-        @printer.make_header_red
-      end
-
-      unless @example_group_red
-        @example_group_red = true
-        @printer.make_example_group_header_red(example_group_number)
-      end
-
-      @printer.move_progress(percent_done)
-
-      example = failure.example
-
-      exception = failure.exception
-      message_lines = failure.fully_formatted_lines(nil, RSpec::Core::Notifications::NullColorizer)
-      exception_details = if exception
-                            {
-                                # drop 2 removes the description (regardless of newlines) and leading blank line
-                                :message => message_lines.drop(2).join("\n"),
-                                :backtrace => failure.formatted_backtrace.join("\n"),
-                            }
-                          end
-      extra = extra_failure_content(failure)
-
-      @printer.print_example_failed(
-          example.execution_result.pending_fixed,
-          example.description,
-          example.execution_result.run_time,
-          @failed_examples.size,
-          exception_details,
-          (extra == "") ? false : extra
-      )
-      @printer.flush
+      @printer.fail_next_in_queue
+      # @failed_examples << failure.example
+      # unless @header_red
+      #   @header_red = true
+      #   @printer.make_header_red
+      # end
+      #
+      # unless @example_group_red
+      #   @example_group_red = true
+      #   @printer.make_example_group_header_red(example_group_number)
+      # end
+      #
+      # @printer.move_progress(percent_done)
+      #
+      # example = failure.example
+      #
+      # exception = failure.exception
+      # message_lines = failure.fully_formatted_lines(nil, RSpec::Core::Notifications::NullColorizer)
+      # exception_details = if exception
+      #                       {
+      #                           # drop 2 removes the description (regardless of newlines) and leading blank line
+      #                           :message => message_lines.drop(2).join("\n"),
+      #                           :backtrace => failure.formatted_backtrace.join("\n"),
+      #                       }
+      #                     end
+      # extra = extra_failure_content(failure)
+      #
+      # @printer.print_example_failed(
+      #     example.execution_result.pending_fixed,
+      #     example.description,
+      #     example.execution_result.run_time,
+      #     @failed_examples.size,
+      #     exception_details,
+      #     (extra == "") ? false : extra
+      # )
+      # @printer.flush
     end
 
     def example_pending(pending)
@@ -105,13 +106,14 @@ module PrettyReports
     end
 
     def dump_summary(summary)
-      @printer.print_summary(
-          summary.duration,
-          summary.example_count,
-          summary.failure_count,
-          summary.pending_count
-      )
-      @printer.flush
+      # binding.pry
+      # @printer.print_summary(
+      #     summary.duration,
+      #     summary.example_count,
+      #     summary.failure_count,
+      #     summary.pending_count
+      # )
+      # @printer.flush
     end
 
     private
