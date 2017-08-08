@@ -2,3 +2,8 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in PrettyReports.gemspec
 gemspec
+
+gem 'pry'
+gem 'rspec'
+gem 'closure-compiler'
+gem 'nokogiri'

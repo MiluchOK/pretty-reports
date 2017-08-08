@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.25.1/react-bootstrap.js"></script>
+</head>
+
+<body>
+
+<script>var cards=[{"title":"foo"},{"title":"boo"}]</script>
+
+<script type="text/jsx">
+
+    var TestCard = React.createClass({
+        render: function() {
+
+            var ButtonGroup = ReactBootstrap.ButtonGroup,
+                Button  = ReactBootstrap.Button,
+                Jumbotron = ReactBootstrap.Jumbotron;
+
+            return (<Jumbotron className="test_container">
+                <h1>{this.props.title}</h1>
+                <p>The test info shit</p>
+                <p><Button bsStyle="primary">Some Cool Action</Button></p>
+            </Jumbotron>);
+        }
+    });
+
+    var TestsContainer = React.createClass({
+        render: function(){
+            var testCardsComponents = this.props.testCards.map(function(testCard) {
+                return <TestCard title={testCard.title} />;
+            });
+            return <div>{testCardsComponents}</div>;
+        }
+    });
+    React.render(<TestsContainer testCards={cards} />, document.getElementById("tests_container"));
+</script>
+
+
+
+
+
+
+<h2>React-Bootstrap Testing</h2>
+<div id="tests_container"></div>
+
+</body>
+</html>

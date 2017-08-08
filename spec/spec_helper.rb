@@ -1,5 +1,7 @@
 require "bundler/setup"
-require "PrettyReports"
+require "pretty_reports"
+require 'pry'
+require 'rspec'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'PrettyReports/version'
+require 'pretty_reports/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "PrettyReports"
+  spec.name          = "pretty_reports"
   spec.version       = PrettyReports::VERSION
   spec.authors       = ["Alexey Milyukov"]
   spec.email         = ["milyukov.alexey@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = 'A set of custom reporters to replace default RSpec formatters.'
+  spec.description   = 'HTML formatter is writtn to solve problem of combining multiple reports created in parallel.'
   spec.homepage      = "https://github.com/MiluchOK/pretty-reports"
   spec.license       = "MIT"
 
@@ -24,4 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry"
+
+  spec.add_dependency 'closure-compiler'
 end
