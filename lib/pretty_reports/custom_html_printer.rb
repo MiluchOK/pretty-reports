@@ -34,6 +34,18 @@ class CustomHtmlPrinter
     write_html_to_output
   end
 
+  def pending_next_in_queue(pending)
+    puts "PENDING"
+    test = @tests.detect { |test| test.empty? }
+    test.merge!({
+                    status: 'pending',
+                    title: pending.example.description,
+                    description: pending.example.description
+                })
+    set_test_cards(@tests)
+    write_html_to_output
+  end
+
   def fail_next_in_queue(failure)
     puts "DIDN'T PASS"
     test = @tests.detect { |test| test.empty? }

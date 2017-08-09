@@ -9,4 +9,9 @@ describe "some example specs" do
   it "didn't pass" do
     expect(1).to eq 0
   end
+
+  it 'is pending' do
+    pending 'the test is lOKO'
+    1/0
+  end
 end

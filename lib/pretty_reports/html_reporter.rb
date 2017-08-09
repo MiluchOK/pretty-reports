@@ -98,12 +98,12 @@ module PrettyReports
 
     def example_pending(pending)
       example = pending.example
-
-      @printer.make_header_yellow unless @header_red
-      @printer.make_example_group_header_yellow(example_group_number) unless @example_group_red
-      @printer.move_progress(percent_done)
-      @printer.print_example_pending(example.description, example.execution_result.pending_message)
-      @printer.flush
+      @printer.pending_next_in_queue(pending)
+      # @printer.make_header_yellow unless @header_red
+      # @printer.make_example_group_header_yellow(example_group_number) unless @example_group_red
+      # @printer.move_progress(percent_done)
+      # @printer.print_example_pending(example.description, example.execution_result.pending_message)
+      # @printer.flush
     end
 
     def dump_summary(summary)
