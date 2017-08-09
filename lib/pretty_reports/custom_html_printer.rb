@@ -1,6 +1,8 @@
 require 'closure-compiler'
 require 'nokogiri'
 require 'json'
+require 'cssminify'
+require 'jsx'
 
 class CustomHtmlPrinter
   def initialize(output)
@@ -11,8 +13,13 @@ class CustomHtmlPrinter
 
   def print_html_start(notification)
     puts "STARTING"
-    file_path = File.join(File.dirname(__FILE__), '/templates/test.js')
-    ugly_js = Closure::Compiler.new.compile(File.open(file_path, 'r'))
+    # js_file_path = File.join(File.dirname(__FILE__), '/templates/js/testCard.jsx')
+    # TODO Take care of uglification/minification later
+    # ugly_js = Closure::Compiler.new.compile(File.open(js_file_path, 'r'))
+    # compiled = JSX.transform(File.read(js_file_path))
+    # css_file_path = File.join(File.dirname(__FILE__), '/templates/css/test.css')
+    # minified_css = CSSminify.compress(File.read(css_file_path))
+    append_initial_js
     write_html_to_output
   end
 
@@ -43,6 +50,12 @@ class CustomHtmlPrinter
         title: failure.example.description,
         description: failure.example.execution_result.exception.to_s
     }
+    write_html_to_output
+  end
+
+  def append_initial_js
+    js_content = File.read(File.join(File.dirname(__FILE__), '/templates/js/testCard.jsx'))
+    @template.css('script')[-1].content = js_content
     write_html_to_output
   end
 

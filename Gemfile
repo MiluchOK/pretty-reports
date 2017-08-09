@@ -7,3 +7,5 @@ gem 'pry'
 gem 'rspec'
 gem 'closure-compiler'
 gem 'nokogiri'
+gem 'cssminify'
+gem "jsx"
