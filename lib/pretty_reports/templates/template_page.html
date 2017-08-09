@@ -1,11 +1,17 @@
 <html>
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.25.1/react-bootstrap.js"></script>
+    <style>
+        div.failed {
+            background-color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,8 +30,11 @@
 
         getDefaultProps: function () {
             return {
-                title: "Unexecuted test.",
-                description: "This test has not been reached by RSpec yet."
+                testData: {
+                    title: "Unexecuted test.",
+                    description: "This test has not been reached by RSpec yet.",
+                    status: 'unexecuted'
+                }
             };
         },
         
@@ -35,19 +44,33 @@
                 Button  = ReactBootstrap.Button,
                 Jumbotron = ReactBootstrap.Jumbotron;
 
-            return (<Jumbotron className="test_container">
-                <h2>{this.props.title}</h2>
-                <p>{this.props.description}</p>
-                <h1>{this.props.status}</h1>
-                <p><Button bsStyle="primary">Some Cool Action</Button></p>
-            </Jumbotron>);
+            var statusClass = 'bg-faded';
+            switch(this.props.testData.status){
+                case 'failed':
+                    statusClass = 'bg-danger';
+                    break;
+                case 'passed':
+                    statusClass = 'bg-success';
+                    break;
+                case 'pending':
+                    statusClass = 'bg-warning';
+                    break;
+            }
+
+
+            return (<Jumbotron className={"test_card " + statusClass}>
+                        <h2>{this.props.testData.title}</h2>
+                        <p>{this.props.testData.description}</p>
+                        <h1>{this.props.testData.status}</h1>
+                        <p><Button>Some Cool Action</Button></p>
+                    </Jumbotron>);
         }
     });
 
     var TestsContainer = React.createClass({
         render: function(){
             var testCardsComponents = this.props.testCards.map(function(testCard) {
-                return <TestCard title={testCard.title} description={testCard.description} status={testCard.status} />;
+                return <TestCard testData={testCard} />;
             });
             return <div>{testCardsComponents}</div>;
         }
