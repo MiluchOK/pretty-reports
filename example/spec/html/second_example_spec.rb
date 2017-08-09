@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-RSpec.configure do |config|
-  config.add_formatter(PrettyReports::HtmlReporter, 'tmp/rspec.html')
-end
-
 describe "some other example specs" do
 
   it 'passed again' do

@@ -51,13 +51,14 @@ module PrettyReports
     end
 
     def example_passed(passed)
-      @printer.move_progress(percent_done)
-      @printer.print_example_passed(passed.example.description, passed.example.execution_result.run_time)
-      @printer.flush
+      @printer.pass_next_in_queue(passed)
+      # @printer.move_progress(percent_done)
+      # @printer.print_example_passed(passed.example.description, passed.example.execution_result.run_time)
+      # @printer.flush
     end
 
     def example_failed(failure)
-      @printer.fail_next_in_queue
+      @printer.fail_next_in_queue(failure)
       # @failed_examples << failure.example
       # unless @header_red
       #   @header_red = true

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PrettyReports::HtmlReporter do
+describe "PrettyReports::HtmlReporter" do
 
   EXAMPLE_DIR = File.expand_path("../../example", __FILE__)
 
