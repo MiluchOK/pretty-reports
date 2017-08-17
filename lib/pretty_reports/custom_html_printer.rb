@@ -20,6 +20,7 @@ class CustomHtmlPrinter
     # css_file_path = File.join(File.dirname(__FILE__), '/templates/css/test.css')
     # minified_css = CSSminify.compress(File.read(css_file_path))
     append_initial_js
+    append_initial_css
     write_html_to_output
   end
 
@@ -59,6 +60,12 @@ class CustomHtmlPrinter
   def append_initial_js
     js_content = File.read(File.join(File.dirname(__FILE__), '/templates/js/testCard.jsx'))
     @template.css('script')[-1].content = js_content
+    write_html_to_output
+  end
+
+  def append_initial_css
+    css_content = File.read(File.join(File.dirname(__FILE__), '/templates/css/test.css'))
+    @template.css('style').first.content = css_content
     write_html_to_output
   end
 

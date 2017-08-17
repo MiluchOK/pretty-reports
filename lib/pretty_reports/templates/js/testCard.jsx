@@ -16,20 +16,24 @@ class TestCard extends React.Component {
 
     summaryView(){
         return(
-            <ReactBootstrap.Jumbotron className={"test_card " + 'statusClass'} onClick={this.handleClick}>
-                <h2>{this.props.testData.title}</h2>
-                <p>{this.props.testData.description}</p>
-                <h1>{this.props.testData.status}</h1>
-                <p><ReactBootstrap.Button>Some Cool Action</ReactBootstrap.Button></p>
-            </ReactBootstrap.Jumbotron>
+            <div className="front">
+                <ReactBootstrap.Jumbotron className={"test_card " + this.props.testData.status} onClick={this.handleClick}>
+                    <h2>{this.props.testData.title}</h2>
+                    <p>{this.props.testData.description}</p>
+                    <h1>{this.props.testData.status}</h1>
+                    <p><ReactBootstrap.Button>Some Cool Action</ReactBootstrap.Button></p>
+                </ReactBootstrap.Jumbotron>
+            </div>
         );
     }
 
     metaView(){
         return(
-            <ReactBootstrap.Jumbotron className={"test_card " + 'statusClass'} onClick={this.handleClick}>
-                {this.props.testData.metadata}
-            </ReactBootstrap.Jumbotron>
+            <div className="back">
+                <ReactBootstrap.Jumbotron className={"test_card " + this.props.testData.status} onClick={this.handleClick}>
+                    {this.props.testData.metadata}
+                </ReactBootstrap.Jumbotron>
+            </div>
         );
     }
 
@@ -41,7 +45,13 @@ class TestCard extends React.Component {
         else{
             ret = this.summaryView();
         }
-        return(ret)
+        return(
+            <div className="flip-container">
+                <div className="flipper">
+                    {ret}
+                </div>
+            </div>
+        )
     }
 }
 
