@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe "some example specs" do
 
-  it 'passed' do
+  it 'passed', someTag: 'firstTAg' do
     expect(1).to eq 1
   end
 
-  it "didn't pass" do
+  it "didn't pass", someTag: 'secondTAg' do
     expect(1).to eq 0
   end
 
