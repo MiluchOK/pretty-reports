@@ -21,7 +21,6 @@ class TestCard extends React.Component {
                     <h2>{this.props.testData.title}</h2>
                     <p>{this.props.testData.description}</p>
                     <h1>{this.props.testData.status}</h1>
-                    <p><ReactBootstrap.Button>Some Cool Action</ReactBootstrap.Button></p>
                 </ReactBootstrap.Jumbotron>
             </div>
         );
@@ -31,7 +30,9 @@ class TestCard extends React.Component {
         return(
             <div className="back">
                 <ReactBootstrap.Jumbotron className={"test_card " + this.props.testData.status} onClick={this.handleClick}>
-                    {this.props.testData.metadata}
+                    <pre class="prettyprint">
+                        {JSON.stringify(this.props.testData.metadata, null, 4)}
+                    </pre>
                 </ReactBootstrap.Jumbotron>
             </div>
         );
