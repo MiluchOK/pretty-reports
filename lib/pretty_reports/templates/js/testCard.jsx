@@ -64,13 +64,3 @@ TestCard.defaultProps = {
     }
 };
 
-class TestsContainer extends React.Component {
-    render() {
-        var testCardsComponents = this.props.testCards.map(function(testCard) {
-            return <TestCard testData={testCard} />;
-        });
-        return <div>{testCardsComponents}</div>;
-    }
-}
-
-React.render(<TestsContainer testCards={cards} />, document.getElementById("tests_container"));
