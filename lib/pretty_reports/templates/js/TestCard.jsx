@@ -6,8 +6,10 @@ class TestCard extends React.Component {
             title: "Unexecuted test.",
             description: "This test has not been reached by RSpec yet.",
             status: 'unexecuted',
-            exception: ''
+            exception: '',
+            backtrace: ''
         };
+
         this.state = {
             flipped: false,
             testData: props.testData || defaultTestData
@@ -24,6 +26,7 @@ class TestCard extends React.Component {
         return(
             <QuickView toggler={this.handleClick} title={this.state.testData.title}
                        exception={this.state.testData.exception}
+                       stackTrace={this.state.testData.backtrace}
             />
         );
     }
