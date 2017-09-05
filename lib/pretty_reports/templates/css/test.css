@@ -16,3 +16,13 @@
 .test_card {
     margin-bottom: 10px;
 }
+
+img.logo {
+    height: 200px;
+    display:block;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+

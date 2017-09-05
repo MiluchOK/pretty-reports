@@ -1,26 +1,23 @@
 class TestsContainer extends React.Component {
-    render() {
-        var testCardsComponents = this.props.testCards.map(function(testCard) {
-            return <TestCard testData={testCard} />;
-        });
 
-        var logo =
-            <ReactBootstrap.Grid>
-                <ReactBootstrap.Row>
-                    <ReactBootstrap.Thumbnail href="http://google.com" alt="171x180" src={this.props.logoUrl} responsive/>
-                </ReactBootstrap.Row>
-            </ReactBootstrap.Grid>;
+    constructor(props){
+        super(props);
+        this.state = {
+            tests: this.props.testCards || []
+        }
+    }
+
+    render() {
+        const logo = "https://crunchbase-production-res.cloudinary.com/image/upload/c_limit,h_600,w_600/v1453924600/tmmdxp5a13bemgsrqkce.png";
+        const name = 'Branch';
 
 
         return(
             <div className="allContent">
-                <div className="logo">
-                    {logo}
-                </div>
-
-                <div>
-                    {testCardsComponents}
-                </div>
+                <Logo name={name} logo_src={logo} />
+                {this.state.tests.map((entry,index) => {
+                    return <TestCard key={index} testData={entry} />
+                })}
             </div>
         );
     }

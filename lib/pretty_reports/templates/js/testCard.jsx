@@ -2,15 +2,19 @@ class TestCard extends React.Component {
 
     constructor(props) {
         super(props);
+        const defaultTestData = {
+            title: "Unexecuted test.",
+            description: "This test has not been reached by RSpec yet.",
+            status: 'unexecuted'
+        };
         this.state = {
-            flipped: false
+            flipped: false,
+            testData: props.testData || defaultTestData
         };
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
-        // var meta = JSON.stringify(this.props.testData.metadata);
-        // alert(meta);
         this.setState({flipped: !this.state.flipped})
     }
 
@@ -55,12 +59,3 @@ class TestCard extends React.Component {
         )
     }
 }
-
-TestCard.defaultProps = {
-    testData: {
-        title: "Unexecuted test.",
-        description: "This test has not been reached by RSpec yet.",
-        status: 'unexecuted'
-    }
-};
-
