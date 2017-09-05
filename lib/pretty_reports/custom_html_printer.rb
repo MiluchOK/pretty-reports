@@ -71,6 +71,7 @@ class CustomHtmlPrinter
 
   def append_initial_css
     css_content = File.read(File.join(File.dirname(__FILE__), '/templates/css/test.css'))
+    css_content += File.read(File.join(File.dirname(__FILE__), '/templates/css/pretty_print.css'))
     @template.css('style').first.content = css_content
     write_html_to_output
   end
