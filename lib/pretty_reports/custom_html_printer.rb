@@ -52,15 +52,19 @@ class CustomHtmlPrinter
         status: 'failed',
         title: failure.example.description,
         description: failure.example.execution_result.exception.to_s,
+        exception: failure.exception,
+        backtrace: failure.exception.backtrace.join("\n"),
         metadata: failure.example.metadata
     }
     write_html_to_output
   end
 
   def append_initial_js
-    js_content = File.read(File.join(File.dirname(__FILE__), '/templates/js/testCard.jsx'))
+    js_content = File.read(File.join(File.dirname(__FILE__), '/templates/js/TestCard.jsx'))
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/Logo.jsx'))
-    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/testContainer.jsx'))
+    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/QuickView.jsx'))
+    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/DebugView.jsx'))
+    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/TestContainer.jsx'))
     @template.css('script')[-1].content = js_content
     write_html_to_output
   end
