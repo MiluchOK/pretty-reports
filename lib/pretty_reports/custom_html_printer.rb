@@ -61,6 +61,7 @@ class CustomHtmlPrinter
 
   def append_initial_js
     js_content = File.read(File.join(File.dirname(__FILE__), '/templates/js/TestCard.jsx'))
+    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/ImgCarousel.jsx'))
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/Logo.jsx'))
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/QuickView.jsx'))
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/DebugView.jsx'))

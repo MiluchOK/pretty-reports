@@ -7,6 +7,9 @@ describe "some example specs" do
   end
 
   it "didn't pass", someTag: 'secondTAg' do
+    RSpec.current_example.metadata.merge!({
+        images: ['http://via.placeholder.com/350x150', 'http://via.placeholder.com/350x150']
+                                          })
     expect(1).to eq 0
   end
 

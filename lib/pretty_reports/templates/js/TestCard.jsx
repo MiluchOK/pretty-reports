@@ -25,8 +25,9 @@ class TestCard extends React.Component {
         this.setState({flipped: !this.state.flipped})
     }
 
-    toggleExpand(){
+    toggleExpand(e){
         console.log('Expand is fired!');
+        e.stopPropagation();
         this.setState({expanded: !this.state.expanded})
     }
 
@@ -41,7 +42,9 @@ class TestCard extends React.Component {
 
     metaView(){
         return(
-            <DebugView toggler={this.handleClick} />
+            <DebugView toggler={this.handleClick}
+                images={this.state.testData.metadata.images}
+            />
         );
     }
 
