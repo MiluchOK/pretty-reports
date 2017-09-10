@@ -11,7 +11,7 @@ class QuickView extends React.Component {
     render() {
 
         const backtraceStyle = {
-            "font-size": '15px'
+            "font-size": '9px'
         };
 
         return(

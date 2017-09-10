@@ -65,7 +65,7 @@ class TestCard extends React.Component {
             ret = this.quickView();
         }
         return(
-            <div>
+            <div className="test_card">
                 <ReactBootstrap.Panel header={title} bsStyle={statusClass}>
                     {
                         (this.state.testData.status != 'failed') ?
