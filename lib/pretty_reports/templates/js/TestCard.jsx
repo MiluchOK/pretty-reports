@@ -12,14 +12,22 @@ class TestCard extends React.Component {
 
         this.state = {
             flipped: false,
+            expanded: false,
             testData: props.testData || defaultTestData
         };
         this.handleClick = this.handleClick.bind(this);
         this.stateStatusToBootstrap = this.stateStatusToBootstrap.bind(this);
+        this.toggleExpand = this.toggleExpand.bind(this);
     }
 
     handleClick() {
+        console.log('Flip is fired!');
         this.setState({flipped: !this.state.flipped})
+    }
+
+    toggleExpand(){
+        console.log('Expand is fired!');
+        this.setState({expanded: !this.state.expanded})
     }
 
     quickView(){
@@ -55,7 +63,7 @@ class TestCard extends React.Component {
 
     render() {
         var ret;    //The view
-        var title = this.state.testData.title;
+        var title = <h3 onClick={this.toggleExpand}>{this.state.testData.title}</h3>;
         var statusClass = this.stateStatusToBootstrap();
 
         if(this.state.flipped){
@@ -68,7 +76,7 @@ class TestCard extends React.Component {
             <div className="test_card">
                 <ReactBootstrap.Panel header={title} bsStyle={statusClass}>
                     {
-                        (this.state.testData.status != 'failed') ?
+                        (!this.state.expanded) ?
                             (null) :
                             (ret)
                     }

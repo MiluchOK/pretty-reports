@@ -2,39 +2,28 @@ class QuickView extends React.Component {
 
     constructor(props){
         super(props);
+        console.log("In Quick View constructor.");
         this.state = {
-            exception: this.props.exception || '',
-            stackTrace: this.props.stackTrace || ''
+            exception: this.props.exception || 'No exception',
+            stackTrace: this.props.stackTrace || ['No StackTrace']
         }
     }
 
     render() {
 
         const backtraceStyle = {
-            "font-size": '9px'
+            "fontSize": '9px'
         };
 
         return(
             <div className="quick_view" onClick={this.props.toggler}>
-                {
-                    (this.state.exception) ?
-                        (
-                        <pre className="prettyprint">
-                            {this.state.exception}
-                        </pre>
-                        )
-                        :
-                       (<p></p>)
-                }
-                {
-                    (this.state.stackTrace) ?
-                        (<p style={backtraceStyle}>
-                            {this.state.stackTrace.map(item => <div>{item}</div>)}
-                        </p>
-                        )
-                        :
-                        (<p></p>)
-                }
+                <pre className="prettyprint">
+                    {this.state.exception}
+                </pre>
+
+                <p style={backtraceStyle}>
+                    {this.state.stackTrace.map(item => <span className="stack-trace-line">{item}</span>)}
+                </p>
             </div>
         );
     }

@@ -13,9 +13,9 @@ class DebugView extends React.Component {
     render() {
         return(
             <div onClick={this.props.toggler}>
-                <pre class="prettyprint">
-                    {JSON.stringify(this.state.testData.metadata, null, 4)}
-                </pre>
+                <span>
+                    The debugging view.
+                </span>
             </div>
         );
     }

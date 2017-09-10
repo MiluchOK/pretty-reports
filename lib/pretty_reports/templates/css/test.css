@@ -16,4 +16,7 @@ img.logo {
     margin-bottom: 50px;
 }
 
+span.stack-trace-line {
+    display: inline-block;
+}
 
