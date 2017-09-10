@@ -67,6 +67,11 @@ class TestCard extends React.Component {
         return(
             <div>
                 <ReactBootstrap.Panel header={title} bsStyle={statusClass}>
+                    {
+                        (this.state.testData.status != 'failed') ?
+                            (null) :
+                            (ret)
+                    }
                 </ReactBootstrap.Panel>
             </div>
         )
