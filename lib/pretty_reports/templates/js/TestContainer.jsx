@@ -14,6 +14,7 @@ class TestsContainer extends React.Component {
 
         return(
             <div className="allContent">
+                {console.log("Rendering")}
                 <Logo name={name} logo_src={logo} />
                 {this.state.tests.map((entry,index) => {
                     return <TestCard key={index} testData={entry} />
@@ -23,4 +24,4 @@ class TestsContainer extends React.Component {
     }
 }
 
-React.render(<TestsContainer logoUrl={logoUrl} testCards={cards} />, document.getElementById("tests_container"));
+ReactDOM.render(<TestsContainer logoUrl={logoUrl} testCards={cards} />, document.getElementById("tests_container"));

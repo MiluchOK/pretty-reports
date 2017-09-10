@@ -3,7 +3,6 @@ class QuickView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            title: this.props.title || 'No title given',
             exception: this.props.exception || '',
             stackTrace: this.props.stackTrace || ''
         }
@@ -13,11 +12,10 @@ class QuickView extends React.Component {
 
         const backtraceStyle = {
             "font-size": '15px'
-        }
+        };
 
         return(
-            <ReactBootstrap.Jumbotron onClick={this.props.toggler}>
-                <h2> Title: {this.state.title}</h2>
+            <div className="quick_view" onClick={this.props.toggler}>
                 {
                     (this.state.exception) ?
                         (
@@ -37,7 +35,7 @@ class QuickView extends React.Component {
                         :
                         (<p></p>)
                 }
-            </ReactBootstrap.Jumbotron>
+            </div>
         );
     }
 }

@@ -12,11 +12,11 @@ class DebugView extends React.Component {
 
     render() {
         return(
-            <ReactBootstrap.Jumbotron onClick={this.props.toggler}>
+            <div onClick={this.props.toggler}>
                 <pre class="prettyprint">
                     {JSON.stringify(this.state.testData.metadata, null, 4)}
                 </pre>
-            </ReactBootstrap.Jumbotron>
+            </div>
         );
     }
 }

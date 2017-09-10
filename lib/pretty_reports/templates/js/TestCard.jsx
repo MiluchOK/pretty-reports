@@ -15,14 +15,14 @@ class TestCard extends React.Component {
             testData: props.testData || defaultTestData
         };
         this.handleClick = this.handleClick.bind(this);
+        this.stateStatusToBootstrap = this.stateStatusToBootstrap.bind(this);
     }
 
     handleClick() {
         this.setState({flipped: !this.state.flipped})
     }
 
-    summaryView(){
-        {console.log("Data: " + this.state.testData)}
+    quickView(){
         return(
             <QuickView toggler={this.handleClick} title={this.state.testData.title}
                        exception={this.state.testData.exception}
@@ -37,17 +37,37 @@ class TestCard extends React.Component {
         );
     }
 
+    stateStatusToBootstrap(){
+        switch(this.state.testData.status) {
+            case 'failed':
+                return 'danger';
+                break;
+            case 'passed':
+                return 'success';
+                break;
+            case 'pending':
+                return 'warning';
+                break;
+            default:
+                return 'info';
+        }
+    }
+
     render() {
-        var ret;
+        var ret;    //The view
+        var title = this.state.testData.title;
+        var statusClass = this.stateStatusToBootstrap();
+
         if(this.state.flipped){
             ret = this.metaView();
         }
         else{
-            ret = this.summaryView();
+            ret = this.quickView();
         }
         return(
-            <div className={"test_card " + this.state.testData.status}>
-                {ret}
+            <div>
+                <ReactBootstrap.Panel header={title} bsStyle={statusClass}>
+                </ReactBootstrap.Panel>
             </div>
         )
     }
