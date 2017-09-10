@@ -8,7 +8,18 @@ describe "some example specs" do
 
   it "didn't pass", someTag: 'secondTAg' do
     RSpec.current_example.metadata.merge!({
-        images: ['http://via.placeholder.com/350x150', 'http://via.placeholder.com/350x150']
+        reporter_images: [
+            {
+                url: 'http://via.placeholder.com/350x150',
+                title: 'The First Image',
+                description: 'The First Image Description'
+            },
+            {
+                url: 'http://via.placeholder.com/350x150',
+                title: 'The Second Image',
+                description: 'The Second Image Description'
+            }
+        ]
                                           })
     expect(1).to eq 0
   end

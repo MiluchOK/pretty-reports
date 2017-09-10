@@ -1,11 +1,7 @@
-#TODO 
-Make QuickView/DebugView expand/collapse when title is clicked (render just the titles by default)
-
 # PrettyReports
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/PrettyReports`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A pretty RSpec html reporter with decent customization capabilities and ability to 'squash' multiple 
+  reports into one if case if you are running lots of parallel test executions.
 
 ## Installation
 
@@ -15,28 +11,28 @@ Add this line to your application's Gemfile:
 gem 'PrettyReports'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install PrettyReports
-
 ## Usage
 
-TODO: Write usage instructions here
+#### How to add **images** to my reports? 
 
-## Development
+``` ruby 
+images = [
+    {
+        url: 'http://url_to_the_image.png',
+        title: 'Title of the image',
+        description: 'Description of the image'
+    },
+    {
+            url: 'http://url_to_the_second_image.png',
+            title: 'Title of the image',
+            description: 'Description of the image'
+        }
+]
+RSpec.current_example.metadata.merge!(reporter_images: images)
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/PrettyReports. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+Note: It is important that the list of image hashes is named as `reporter_images` ,because that is
+what the gem is going to be looking for.
 
 ## License
 

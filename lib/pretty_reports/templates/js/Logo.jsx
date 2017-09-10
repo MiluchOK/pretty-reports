@@ -2,6 +2,7 @@ class Logo extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log("Logo constructor");
         this.state = {
             logo_src: props.logo_src || 'http://sites.seizethemarket.com/site-files/9/cms/26/photo-1.jpg',
             name: props.name || 'Pretty Reporter'

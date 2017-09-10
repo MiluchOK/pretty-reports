@@ -43,7 +43,7 @@ class TestCard extends React.Component {
     metaView(){
         return(
             <DebugView toggler={this.handleClick}
-                images={this.state.testData.metadata.images}
+                images={this.state.testData.metadata.reporter_images}
             />
         );
     }

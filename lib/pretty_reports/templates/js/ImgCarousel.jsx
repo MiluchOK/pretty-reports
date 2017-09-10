@@ -27,10 +27,10 @@ class ImgCarousel extends React.Component {
                     return(
                         <ReactBootstrap.Carousel.Item key={index}>
                             {console.log("Rendering with: " + entry)}
-                            <img width={900} height={500} alt="900x500" src={entry}/>
+                            <img width={900} height={500} alt="900x500" src={entry.url}/>
                             <ReactBootstrap.Carousel.Caption>
-                                <h3>{entry}</h3>
-                                <p>{entry}</p>
+                                <h3>{entry.title}</h3>
+                                <p>{entry.description}</p>
                             </ReactBootstrap.Carousel.Caption>
                         </ReactBootstrap.Carousel.Item>
                     )

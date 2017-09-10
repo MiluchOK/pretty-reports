@@ -65,7 +65,8 @@ class CustomHtmlPrinter
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/Logo.jsx'))
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/QuickView.jsx'))
     js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/DebugView.jsx'))
-    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/TestContainer.jsx'))
+    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/TestsContainer.jsx'))
+    js_content += File.read(File.join(File.dirname(__FILE__), '/templates/js/App.jsx'))
     @template.css('script')[-1].content = js_content
     write_html_to_output
   end
