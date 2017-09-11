@@ -44,6 +44,7 @@ class TestCard extends React.Component {
         return(
             <DebugView toggler={this.handleClick}
                 images={this.state.testData.metadata.reporter_images}
+                logs={this.state.testData.metadata.reporter_logs}
             />
         );
     }

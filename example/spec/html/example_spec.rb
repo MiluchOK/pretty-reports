@@ -21,6 +21,15 @@ describe "some example specs" do
             }
         ]
                                           })
+
+    RSpec.current_example.metadata.merge!({
+        reporter_logs: [
+            {
+                title: 'Main Test Logs',
+                url: 'http://textfiles.com/100/914bbs.txt'
+            }
+        ]
+                                          })
     expect(1).to eq 0
   end
 
