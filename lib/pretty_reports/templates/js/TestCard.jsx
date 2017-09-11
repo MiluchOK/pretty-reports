@@ -67,7 +67,10 @@ class TestCard extends React.Component {
 
     render() {
         var ret;    //The view
-        var title = <h3 onClick={this.toggleExpand}>{this.state.testData.title}</h3>;
+        var title = <h3 onClick={this.toggleExpand}>{this.state.testData.title}
+            <span className="case_id">Case id: <strong>{this.state.testData.metadata.crail_id || 'Unspecified'}</strong>
+            </span>
+        </h3>;
         var statusClass = this.stateStatusToBootstrap();
 
         if(this.state.flipped){

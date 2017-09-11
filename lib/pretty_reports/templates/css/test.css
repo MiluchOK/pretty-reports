@@ -27,3 +27,7 @@ div.logs_content {
 div.logger {
     margin-top: 5px;
 }
+
+span.case_id {
+    float:right;
+}

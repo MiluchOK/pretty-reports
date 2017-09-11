@@ -6,7 +6,7 @@ describe "some example specs" do
     expect(1).to eq 1
   end
 
-  it "didn't pass", someTag: 'secondTAg' do
+  it "didn't pass", someTag: 'secondTAg', crail_id: 1234 do
 
     logs = JSON.parse(HTTPClient.new.get('https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1').body).join("\n\n")
 
