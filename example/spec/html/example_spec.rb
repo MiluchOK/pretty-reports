@@ -7,6 +7,9 @@ describe "some example specs" do
   end
 
   it "didn't pass", someTag: 'secondTAg' do
+
+    logs = JSON.parse(HTTPClient.new.get('https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1').body).join("\n\n")
+
     RSpec.current_example.metadata.merge!({
         reporter_images: [
             {
@@ -26,7 +29,11 @@ describe "some example specs" do
         reporter_logs: [
             {
                 title: 'Main Test Logs',
-                url: 'http://textfiles.com/100/914bbs.txt'
+                content: logs
+            },
+            {
+                title: 'Second Test Logs',
+                content: logs
             }
         ]
                                           })

@@ -10,3 +10,4 @@ gem 'nokogiri'
 gem 'cssminify'
 gem "jsx"
 gem 'guard-rspec', require: false
+gem 'httpclient'
