@@ -1,7 +1,6 @@
 require 'closure-compiler'
 require 'nokogiri'
 require 'json'
-require 'cssminify'
 require 'jsx'
 
 class CustomHtmlPrinter
