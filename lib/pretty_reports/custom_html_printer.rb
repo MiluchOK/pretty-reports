@@ -1,7 +1,6 @@
 require 'closure-compiler'
 require 'nokogiri'
 require 'json'
-require 'jsx'
 
 class CustomHtmlPrinter
   def initialize(output)
