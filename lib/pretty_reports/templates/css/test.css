@@ -24,10 +24,20 @@ div.logs_content {
     white-space:pre-wrap;
 }
 
-div.logger {
-    margin-top: 5px;
-}
-
 span.case_id {
     float:right;
+}
+
+p.stack-trace {
+    font-size: 9px;
+    white-space:pre-wrap;
+}
+
+div.log_row {
+    margin-top: 10px;
+}
+
+div.logger {
+    display: flex;
+    justify-content: center;
 }

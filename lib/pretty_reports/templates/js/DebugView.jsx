@@ -15,13 +15,24 @@ class DebugView extends React.Component {
         return(
             <div onClick={this.props.toggler}>
                 <div>Debug view.</div>
-                <ImgCarousel images={this.state.images} />
+                <ReactBootstrap.Grid>
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col md={8} mdOffset={2}>
+                            <ImgCarousel images={this.state.images} />
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>
 
-                {this.state.logs.map((entry,index) => {
-                    return(
-                        <Logger key={index} log={entry}/>
-                    )
-                })}
+
+                    {this.state.logs.map((entry,index) => {
+                        return(
+                            <ReactBootstrap.Row className="log_row">
+                                <ReactBootstrap.Col md={6} mdOffset={3}>
+                                    <Logger key={index} log={entry}/>
+                                </ReactBootstrap.Col>
+                            </ReactBootstrap.Row>
+                        )
+                    })}
+                </ReactBootstrap.Grid>
             </div>
         );
     }

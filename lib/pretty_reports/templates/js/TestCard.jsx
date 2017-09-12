@@ -20,7 +20,7 @@ class TestCard extends React.Component {
         this.toggleExpand = this.toggleExpand.bind(this);
     }
 
-    handleClick() {
+    handleClick(){
         console.log('Flip is fired!');
         this.setState({flipped: !this.state.flipped})
     }

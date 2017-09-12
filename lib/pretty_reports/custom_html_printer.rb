@@ -53,7 +53,7 @@ class CustomHtmlPrinter
         title: failure.example.description,
         description: failure.example.execution_result.exception.to_s,
         exception: failure.exception,
-        backtrace: failure.exception.backtrace,
+        backtrace: failure.exception.backtrace.join("\n"),
         metadata: failure.example.metadata
     }
     write_html_to_output
