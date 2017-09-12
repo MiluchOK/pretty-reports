@@ -1,5 +1,12 @@
 # PrettyReports
 
+#TODOs before public release
+
+1) Convert logs to be clickable links instead of text
+2) Add Summary with number of tests executed broken down by number of tests passed ,failed and 
+ pending
+3) Add functionality to squash together multiple reports
+
 A pretty RSpec html reporter with decent customization capabilities and ability to 'squash' multiple 
   reports into one if case if you are running lots of parallel test executions.
 
