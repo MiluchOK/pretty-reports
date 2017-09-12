@@ -10,10 +10,12 @@ class TestsContainer extends React.Component {
     render() {
         return(
             <div className="allContent">
-                {console.log("Rendering")}
-                {this.state.tests.map((entry,index) => {
-                    return <TestCard key={index} testData={entry} />
-                })}
+                <ReactBootstrap.PanelGroup>
+                    {console.log("Rendering")}
+                    {this.state.tests.map((entry,index) => {
+                        return <TestCard key={index} testData={entry} />
+                    })}
+                </ReactBootstrap.PanelGroup>
             </div>
         );
     }

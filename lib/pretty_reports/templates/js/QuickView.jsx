@@ -12,13 +12,17 @@ class QuickView extends React.Component {
     render() {
         return(
             <div className="quick_view" onClick={this.props.toggler}>
-                <pre className="prettyprint">
-                    {this.state.exception}
-                </pre>
+                <ReactBootstrap.Well>
+                    <pre className="prettyprint">
+                        {this.state.exception}
+                    </pre>
+                </ReactBootstrap.Well>
 
-                <p className="stack-trace">
-                    {this.state.stackTrace}
-                </p>
+                <div className="stack-trace-box">
+                    <p className="stack-trace">
+                        {this.state.stackTrace}
+                    </p>
+                </div>
             </div>
         );
     }

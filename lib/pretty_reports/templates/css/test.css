@@ -41,3 +41,7 @@ div.logger {
     display: flex;
     justify-content: center;
 }
+
+div.stack-trace-box {
+    margin-top: 15px;
+}

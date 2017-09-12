@@ -12,23 +12,15 @@ class TestCard extends React.Component {
 
         this.state = {
             flipped: false,
-            expanded: false,
             testData: props.testData || defaultTestData
         };
         this.handleClick = this.handleClick.bind(this);
         this.stateStatusToBootstrap = this.stateStatusToBootstrap.bind(this);
-        this.toggleExpand = this.toggleExpand.bind(this);
     }
 
     handleClick(){
         console.log('Flip is fired!');
         this.setState({flipped: !this.state.flipped})
-    }
-
-    toggleExpand(e){
-        console.log('Expand is fired!');
-        e.stopPropagation();
-        this.setState({expanded: !this.state.expanded})
     }
 
     quickView(){
@@ -67,10 +59,11 @@ class TestCard extends React.Component {
 
     render() {
         var ret;    //The view
-        var title = <h3 onClick={this.toggleExpand}>{this.state.testData.title}
-            <span className="case_id">Case id: <strong>{this.state.testData.metadata.crail_id || 'Unspecified'}</strong>
-            </span>
-        </h3>;
+        var title = <h3>{this.state.testData.title}
+                        <span className="case_id">Case id: <strong>{this.state.testData.metadata.crail_id || 'Unspecified'}</strong>
+
+                        </span>
+                    </h3>;
         var statusClass = this.stateStatusToBootstrap();
 
         if(this.state.flipped){
@@ -81,12 +74,8 @@ class TestCard extends React.Component {
         }
         return(
             <div className="test_card">
-                <ReactBootstrap.Panel header={title} bsStyle={statusClass}>
-                    {
-                        (!this.state.expanded) ?
-                            (null) :
-                            (ret)
-                    }
+                <ReactBootstrap.Panel collapsible header={title} bsStyle={statusClass}>
+                    {ret}
                 </ReactBootstrap.Panel>
             </div>
         )
