@@ -28,7 +28,7 @@ class CustomHtmlPrinter
     puts "PASSED"
     @tests << {
                     status: 'passed',
-                    title: passed.example.description,
+                    title: passed.example.full_description,
                     description: passed.example.description,
                     metadata: passed.example.metadata
                 }
@@ -39,7 +39,7 @@ class CustomHtmlPrinter
     puts "PENDING"
     @tests << {
                     status: 'pending',
-                    title: pending.example.description,
+                    title: pending.example.full_description,
                     description: pending.example.description,
                     metadata: pending.example.metadata
                 }
@@ -50,7 +50,7 @@ class CustomHtmlPrinter
     puts "DIDN'T PASS"
     @tests << {
         status: 'failed',
-        title: failure.example.description,
+        title: failure.example.full_description,
         description: failure.example.execution_result.exception.to_s,
         exception: failure.exception,
         backtrace: failure.exception.backtrace.join("\n"),
