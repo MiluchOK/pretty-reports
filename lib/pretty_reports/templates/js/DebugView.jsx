@@ -15,7 +15,6 @@ class DebugView extends React.Component {
         return(
             <div onClick={this.props.toggler}>
                 <div>Debug view.</div>
-                <ReactBootstrap.Grid>
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col md={8} mdOffset={2}>
                             <ImgCarousel images={this.state.images} />
@@ -32,7 +31,6 @@ class DebugView extends React.Component {
                             </ReactBootstrap.Row>
                         )
                     })}
-                </ReactBootstrap.Grid>
             </div>
         );
     }
