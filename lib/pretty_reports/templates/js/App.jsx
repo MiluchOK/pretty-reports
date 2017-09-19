@@ -76,26 +76,22 @@ class App extends React.Component {
 
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col md={2}>
-                            <ReactBootstrap.ListGroup>
-                                <ReactBootstrap.ListGroupItem bsStyle="info">Number of tests: {all_tests.length}</ReactBootstrap.ListGroupItem>
-                                <ReactBootstrap.ListGroupItem bsStyle="success">Passing tests: {passed_tests.length}</ReactBootstrap.ListGroupItem>
-                                <ReactBootstrap.ListGroupItem bsStyle="warning">Pending tests: {pending_tests.length}</ReactBootstrap.ListGroupItem>
-                                <ReactBootstrap.ListGroupItem bsStyle="danger">Failing tests: {failed_tests.length}</ReactBootstrap.ListGroupItem>
-                            </ReactBootstrap.ListGroup>
-                        </ReactBootstrap.Col>
+                            <ReactBootstrap.ProgressBar>
+                                <ReactBootstrap.ProgressBar bsStyle="success"
+                                                            onClick={this.togglePassed}
+                                                            now={passed_tests.length/(all_tests.length/100)}
+                                                            label={"Passing: " + passed_tests.length}/>
 
-                        <ReactBootstrap.Col md={4} mdOffset={6}>
-                            <ReactBootstrap.Checkbox defaultChecked onChange={this.toggleFailed}>
-                                Failure
-                            </ReactBootstrap.Checkbox>
+                                <ReactBootstrap.ProgressBar bsStyle="warning"
+                                                            onClick={this.togglePending}
+                                                            now={pending_tests.length/(all_tests.length/100)}
+                                                            label={"Pending: " + pending_tests.length}/>
 
-                            <ReactBootstrap.Checkbox defaultChecked onChange={this.togglePending}>
-                                Pending
-                            </ReactBootstrap.Checkbox>
-
-                            <ReactBootstrap.Checkbox defaultChecked onChange={this.togglePassed}>
-                                Passing
-                            </ReactBootstrap.Checkbox>
+                                <ReactBootstrap.ProgressBar bsStyle="danger"
+                                                            onClick={this.toggleFailed}
+                                                            now={failed_tests.length/(all_tests.length/100)}
+                                                            label={"Failing: " + failed_tests.length}/>
+                            </ReactBootstrap.ProgressBar>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
 
