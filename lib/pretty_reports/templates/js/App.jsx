@@ -3,43 +3,26 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            testCards: cards
+            testCards: cards,
+            showFailed: true,
+            showPending: true,
+            showPassed: true
         };
-        this.filterTestsByStatus = this.filterTestsByStatus.bind(this);
-        this.filterByFailed = this.filterByFailed.bind(this);
-        this.filterByPending = this.filterByPending.bind(this);
-        this.filterByPassed = this.filterByPassed.bind(this);
+        this.toggleFailed = this.toggleFailed.bind(this);
+        this.togglePending = this.togglePending.bind(this);
+        this.togglePassed = this.togglePassed.bind(this);
     }
 
-    filterTestsByStatus(filterBy){
-        console.log("Filtering by " + filterBy);
-        const filteredCards = [];
-
-        this.state.testCards.map((entry) => {
-            if(entry.status == filterBy){
-                filteredCards.push(entry)
-            }
-        });
-
-        console.log("Filtered: " + filteredCards);
-        this.setState({
-            testCards: filteredCards
-        });
+    toggleFailed(){
+        this.setState({showFailed: !this.state.showFailed});
     }
 
-    filterByFailed(){
-        console.log("Filtering by Passing.");
-        this.filterTestsByStatus('failed')
+    togglePending(){
+        this.setState({showPending: !this.state.showPending});
     }
 
-    filterByPending(){
-        console.log("Filtering by Pending.");
-        this.filterTestsByStatus('pending')
-    }
-
-    filterByPassed(){
-        console.log("Filtering by Passed.");
-        this.filterTestsByStatus('passed')
+    togglePassed(){
+        this.setState({showPassed: !this.state.showPassed});
     }
 
     render() {
@@ -52,6 +35,7 @@ class App extends React.Component {
         let passed_tests = [];
         let failed_tests = [];
         let pending_tests = [];
+        let testsToShow = [];
 
         cards.map((entry, index) => {
             if(entry.status == 'passed'){
@@ -65,10 +49,23 @@ class App extends React.Component {
             }
         });
 
+        if(this.state.showFailed){
+            testsToShow = testsToShow.concat(failed_tests)
+        }
+        if(this.state.showPending){
+            testsToShow = testsToShow.concat(pending_tests)
+        }
+        if(this.state.showPassed){
+            testsToShow = testsToShow.concat(passed_tests)
+        }
+
         {console.log("Number of tests: " + all_tests.length)}
         {console.log("Number of passed tests: " + passed_tests.length)}
         {console.log("Number of failed tests: " + failed_tests.length)}
         {console.log("Number of pending tests: " + pending_tests.length)}
+        {console.log("Tests to show: " + testsToShow)}
+
+
 
         return(
             <div className="the_app">
@@ -88,22 +85,22 @@ class App extends React.Component {
                         </ReactBootstrap.Col>
 
                         <ReactBootstrap.Col md={4} mdOffset={6}>
-                            <ReactBootstrap.Checkbox defaultChecked onChange={this.filterByFailed}>
+                            <ReactBootstrap.Checkbox defaultChecked onChange={this.toggleFailed}>
                                 Failure
                             </ReactBootstrap.Checkbox>
 
-                            <ReactBootstrap.Checkbox defaultChecked onChange={this.filterByPending}>
+                            <ReactBootstrap.Checkbox defaultChecked onChange={this.togglePending}>
                                 Pending
                             </ReactBootstrap.Checkbox>
 
-                            <ReactBootstrap.Checkbox defaultChecked onChange={this.filterByPassed}>
+                            <ReactBootstrap.Checkbox defaultChecked onChange={this.togglePassed}>
                                 Passing
                             </ReactBootstrap.Checkbox>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
 
                     {console.log("The rendering test cards in App: " + this.state.testCards)}
-                    <TestsContainer testCards={this.state.testCards}/>
+                    <TestsContainer testCards={testsToShow}/>
                 </ReactBootstrap.Grid>
             </div>
         );
