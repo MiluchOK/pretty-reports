@@ -2,17 +2,8 @@ class TestCard extends React.Component {
 
     constructor(props) {
         super(props);
-        const defaultTestData = {
-            title: "Unexecuted test.",
-            description: "This test has not been reached by RSpec yet.",
-            status: 'unexecuted',
-            exception: '',
-            backtrace: ''
-        };
-
         this.state = {
-            flipped: false,
-            testData: props.testData || defaultTestData
+            flipped: false
         };
         this.handleClick = this.handleClick.bind(this);
         this.stateStatusToBootstrap = this.stateStatusToBootstrap.bind(this);
@@ -25,9 +16,9 @@ class TestCard extends React.Component {
 
     quickView(){
         return(
-            <QuickView toggler={this.handleClick} title={this.state.testData.title}
-                       exception={this.state.testData.exception}
-                       stackTrace={this.state.testData.backtrace}
+            <QuickView toggler={this.handleClick} title={this.props.testData.title}
+                       exception={this.props.testData.exception}
+                       stackTrace={this.props.testData.backtrace}
             />
         );
     }
@@ -35,14 +26,14 @@ class TestCard extends React.Component {
     metaView(){
         return(
             <DebugView toggler={this.handleClick}
-                images={this.state.testData.metadata.reporter_images}
-                logs={this.state.testData.metadata.reporter_logs}
+                images={this.props.testData.metadata.reporter_images}
+                logs={this.props.testData.metadata.reporter_logs}
             />
         );
     }
 
     stateStatusToBootstrap(){
-        switch(this.state.testData.status) {
+        switch(this.props.testData.status) {
             case 'failed':
                 return 'danger';
                 break;
@@ -59,8 +50,8 @@ class TestCard extends React.Component {
 
     render() {
         var ret;    //The view
-        var title = <h3>{this.state.testData.title}
-                        <span className="case_id">Case id: <strong>{this.state.testData.metadata.crail_id || 'Unspecified'}</strong>
+        var title = <h3>{this.props.testData.title}
+                        <span className="case_id">Case id: <strong>{this.props.testData.metadata.crail_id || 'Unspecified'}</strong>
 
                         </span>
                     </h3>;

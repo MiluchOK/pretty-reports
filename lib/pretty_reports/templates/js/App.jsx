@@ -2,6 +2,44 @@ class App extends React.Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            testCards: cards
+        };
+        this.filterTestsByStatus = this.filterTestsByStatus.bind(this);
+        this.filterByFailed = this.filterByFailed.bind(this);
+        this.filterByPending = this.filterByPending.bind(this);
+        this.filterByPassed = this.filterByPassed.bind(this);
+    }
+
+    filterTestsByStatus(filterBy){
+        console.log("Filtering by " + filterBy);
+        const filteredCards = [];
+
+        this.state.testCards.map((entry) => {
+            if(entry.status == filterBy){
+                filteredCards.push(entry)
+            }
+        });
+
+        console.log("Filtered: " + filteredCards);
+        this.setState({
+            testCards: filteredCards
+        });
+    }
+
+    filterByFailed(){
+        console.log("Filtering by Passing.");
+        this.filterTestsByStatus('failed')
+    }
+
+    filterByPending(){
+        console.log("Filtering by Pending.");
+        this.filterTestsByStatus('pending')
+    }
+
+    filterByPassed(){
+        console.log("Filtering by Passed.");
+        this.filterTestsByStatus('passed')
     }
 
     render() {
@@ -10,7 +48,7 @@ class App extends React.Component {
         const name = 'Branch';
 
         //Cards comes from external script
-        const all_tests = cards;
+        const all_tests = this.state.testCards;
         let passed_tests = [];
         let failed_tests = [];
         let pending_tests = [];
@@ -48,9 +86,24 @@ class App extends React.Component {
                                 <ReactBootstrap.ListGroupItem bsStyle="danger">Failing tests: {failed_tests.length}</ReactBootstrap.ListGroupItem>
                             </ReactBootstrap.ListGroup>
                         </ReactBootstrap.Col>
+
+                        <ReactBootstrap.Col md={4} mdOffset={6}>
+                            <ReactBootstrap.Checkbox defaultChecked onChange={this.filterByFailed}>
+                                Failure
+                            </ReactBootstrap.Checkbox>
+
+                            <ReactBootstrap.Checkbox defaultChecked onChange={this.filterByPending}>
+                                Pending
+                            </ReactBootstrap.Checkbox>
+
+                            <ReactBootstrap.Checkbox defaultChecked onChange={this.filterByPassed}>
+                                Passing
+                            </ReactBootstrap.Checkbox>
+                        </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
 
-                    <TestsContainer testCards={cards}/>
+                    {console.log("The rendering test cards in App: " + this.state.testCards)}
+                    <TestsContainer testCards={this.state.testCards}/>
                 </ReactBootstrap.Grid>
             </div>
         );
