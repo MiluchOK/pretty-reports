@@ -77,23 +77,23 @@ class App extends React.Component {
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col md={12} lg={12}>
                             <ReactBootstrap.ProgressBar>
-                                <ReactBootstrap.ProgressBar bsStyle="success"
+                                <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-success
+                                                            ${(this.state.showPassed) ? (null) : ('unselected')}`}
                                                             onClick={this.togglePassed}
                                                             now={passed_tests.length/(all_tests.length/100)}
-                                                            label={`Passing: ${passed_tests.length}
-                                                            (${this.state.showPassed ? ('hide') : ('show')})`}/>
+                                                            label={`Passing: ${passed_tests.length}`}/>
 
-                                <ReactBootstrap.ProgressBar bsStyle="warning"
+                                <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-warning
+                                                            ${(this.state.showPending) ? (null) : ('unselected')}`}
                                                             onClick={this.togglePending}
                                                             now={pending_tests.length/(all_tests.length/100)}
-                                                            label={`Pending: ${passed_tests.length}
-                                                            (${this.state.showPending ? ('hide') : ('show')})`}/>
+                                                            label={`Pending: ${passed_tests.length}`}/>
 
-                                <ReactBootstrap.ProgressBar bsStyle="danger"
+                                <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-danger
+                                                            ${(this.state.showFailed) ? (null) : ('unselected')}`}
                                                             onClick={this.toggleFailed}
                                                             now={failed_tests.length/(all_tests.length/100)}
-                                                            label={`Failed: ${passed_tests.length}
-                                                            (${this.state.showFailed ? ('hide') : ('show')})`}/>
+                                                            label={`Failed: ${passed_tests.length}`}/>
                             </ReactBootstrap.ProgressBar>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
