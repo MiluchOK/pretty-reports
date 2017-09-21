@@ -75,22 +75,25 @@ class App extends React.Component {
                     </ReactBootstrap.Row>
 
                     <ReactBootstrap.Row>
-                        <ReactBootstrap.Col md={2}>
+                        <ReactBootstrap.Col md={12} lg={12}>
                             <ReactBootstrap.ProgressBar>
                                 <ReactBootstrap.ProgressBar bsStyle="success"
                                                             onClick={this.togglePassed}
                                                             now={passed_tests.length/(all_tests.length/100)}
-                                                            label={"Passing: " + passed_tests.length}/>
+                                                            label={`Passing: ${passed_tests.length}
+                                                            (${this.state.showPassed ? ('hide') : ('show')})`}/>
 
                                 <ReactBootstrap.ProgressBar bsStyle="warning"
                                                             onClick={this.togglePending}
                                                             now={pending_tests.length/(all_tests.length/100)}
-                                                            label={"Pending: " + pending_tests.length}/>
+                                                            label={`Pending: ${passed_tests.length}
+                                                            (${this.state.showPending ? ('hide') : ('show')})`}/>
 
                                 <ReactBootstrap.ProgressBar bsStyle="danger"
                                                             onClick={this.toggleFailed}
                                                             now={failed_tests.length/(all_tests.length/100)}
-                                                            label={"Failing: " + failed_tests.length}/>
+                                                            label={`Failed: ${passed_tests.length}
+                                                            (${this.state.showFailed ? ('hide') : ('show')})`}/>
                             </ReactBootstrap.ProgressBar>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
