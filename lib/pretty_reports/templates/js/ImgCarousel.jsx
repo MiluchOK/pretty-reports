@@ -4,8 +4,7 @@ class ImgCarousel extends React.Component {
         super(props);
         this.state = {
             index: 0,
-            direction: null,
-            images: props.images
+            direction: null
         };
         this.handleSelect = this.handleSelect.bind(this);
     }
@@ -21,9 +20,9 @@ class ImgCarousel extends React.Component {
 
     render() {
         return(
-            (this.state.images.length == 0) ? (null) : (
+            (this.props.images.length == 0) ? (null) : (
             <ReactBootstrap.Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
-                {this.state.images.map((entry,index) => {
+                {this.props.images.map((entry,index) => {
                     return(
                         <ReactBootstrap.Carousel.Item key={index}>
                             {console.log("Rendering with: " + entry)}

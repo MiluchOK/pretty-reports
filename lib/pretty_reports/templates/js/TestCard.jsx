@@ -37,6 +37,8 @@ class TestCard extends React.Component {
                         </span>
                     </h3>;
         var statusClass = this.stateStatusToBootstrap();
+        let the_logs = this.props.testData.metadata.reporter_logs || [];
+        let the_images = this.props.testData.metadata.reporter_images || [];
 
         return(
             <div className="test_card">
@@ -53,8 +55,8 @@ class TestCard extends React.Component {
                     <ReactBootstrap.Collapse in={!this.state.flipped}>
                         <div>
                             <DebugView toggler={this.handleClick}
-                                       images={this.props.testData.metadata.reporter_images}
-                                       logs={this.props.testData.metadata.reporter_logs}
+                                       images={the_images}
+                                       logs={the_logs}
                             />
                         </div>
                     </ReactBootstrap.Collapse>
