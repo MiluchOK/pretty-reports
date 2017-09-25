@@ -80,13 +80,13 @@ class App extends React.Component {
                                                             ${(this.state.showPending) ? (null) : ('unselected')}`}
                                                             onClick={this.togglePending}
                                                             now={pending_tests.length/(all_tests.length/100)}
-                                                            label={`Pending: ${passed_tests.length}`}/>
+                                                            label={`Pending: ${pending_tests.length}`}/>
 
                                 <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-danger
                                                             ${(this.state.showFailed) ? (null) : ('unselected')}`}
                                                             onClick={this.toggleFailed}
                                                             now={failed_tests.length/(all_tests.length/100)}
-                                                            label={`Failed: ${passed_tests.length}`}/>
+                                                            label={`Failed: ${failed_tests.length}`}/>
                             </ReactBootstrap.ProgressBar>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
