@@ -25,7 +25,6 @@ class ImgCarousel extends React.Component {
                 {this.props.images.map((entry,index) => {
                     return(
                         <ReactBootstrap.Carousel.Item key={index}>
-                            {console.log("Rendering with: " + entry)}
                             <img width={900} height={500} alt="900x500" src={entry.url}/>
                             <ReactBootstrap.Carousel.Caption>
                                 <h3>{entry.title}</h3>

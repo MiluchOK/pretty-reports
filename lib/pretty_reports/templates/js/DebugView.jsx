@@ -18,7 +18,7 @@ class DebugView extends React.Component {
 
                 {this.props.logs.map((entry,index) => {
                     return(
-                        <ReactBootstrap.Row className="log_row">
+                        <ReactBootstrap.Row className="log_row" key={index}>
                             <ReactBootstrap.Col md={6} mdOffset={3}>
                                 <Logger key={index} log={entry}/>
                             </ReactBootstrap.Col>

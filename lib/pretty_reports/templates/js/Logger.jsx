@@ -10,7 +10,6 @@ class Logger extends React.Component {
     render() {
         return(
         <div className="logger">
-            {console.log("THE LOG: " + this.state.log.url)}
             <ReactBootstrap.Button
                 href={this.state.log.url}
                 bsStyle="primary"

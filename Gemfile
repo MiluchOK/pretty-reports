@@ -11,3 +11,4 @@ gem 'cssminify'
 gem "jsx"
 gem 'guard-rspec', require: false
 gem 'httpclient'
+gem 'rkelly-remix'

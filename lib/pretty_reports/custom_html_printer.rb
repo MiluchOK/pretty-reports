@@ -1,5 +1,4 @@
 require 'closure-compiler'
-require 'nokogiri'
 require 'json'
 
 class CustomHtmlPrinter
@@ -81,7 +80,6 @@ class CustomHtmlPrinter
     # logo_url = 'https://i.pinimg.com/736x/33/b8/69/33b869f90619e81763dbf1fccc896d8d--lion-logo-modern-logo.jpg'
     logo_url = 'https://image.freepik.com/free-icon/twitter-logo_318-40459.jpg'
     @template.css('script')[-2].content = "var logoUrl='#{logo_url}' \nvar cards=#{@tests.to_json}"
-    @output.truncate 0
-    @output.puts(@template.to_html)
+    File.open(@output.path, 'w') { |file| file.write(@template.to_html) }
   end
 end

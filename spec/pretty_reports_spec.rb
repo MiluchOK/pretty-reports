@@ -14,5 +14,6 @@ describe "PrettyReports::HtmlReporter" do
   end
 
   it 'should be created' do
+
   end
 end

@@ -59,13 +59,6 @@ class App extends React.Component {
             testsToShow = testsToShow.concat(passed_tests)
         }
 
-        {console.log("Number of tests: " + all_tests.length)}
-        {console.log("Number of passed tests: " + passed_tests.length)}
-        {console.log("Number of failed tests: " + failed_tests.length)}
-        {console.log("Number of pending tests: " + pending_tests.length)}
-        {console.log("Tests to show: " + testsToShow)}
-
-
 
         return(
             <div className="the_app">
@@ -97,8 +90,6 @@ class App extends React.Component {
                             </ReactBootstrap.ProgressBar>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
-
-                    {console.log("The rendering test cards in App: " + this.state.testCards)}
                     <TestsContainer testCards={testsToShow}/>
                 </ReactBootstrap.Grid>
             </div>

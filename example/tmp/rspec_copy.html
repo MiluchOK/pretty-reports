@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+    <!-- Bootstrap  CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <!-- React Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.3/react-bootstrap.js"></script>
+    <!-- Google Prettier -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
+    <!-- Anime -->
+    <script src="https://unpkg.com/react-motion/build/react-motion.js"></script>
+</head>
+
+<body>
+
+<style>.test_card {
+    margin-top: 5px;
+}
+
+.panel {
+    margin-bottom: 5px;
+}
+
+img.logo {
+    height: 200px;
+    display:block;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+span.stack-trace-line {
+    display: inline-block;
+}
+
+div.logs_content {
+    white-space:pre-wrap;
+}
+
+span.case_id {
+    float:right;
+}
+
+p.stack-trace {
+    font-size: 9px;
+    white-space:pre-wrap;
+}
+
+div.log_row {
+    margin-top: 10px;
+}
+
+div.logger {
+    display: flex;
+    justify-content: center;
+}
+
+div.stack-trace-box {
+    margin-top: 15px;
+}
+
+div.progress-bar.unselected {
+    filter: brightness(85%);
+    box-shadow: inset 0px 0px 20px -4px rgba(0,0,0,0.6);
+}/*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+.prettyprint {
+    background: #fff;
+    font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+    border: 0 !important;
+}
+
+.pln {
+    color: #333;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #cccccc;
+}
+
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L4,
+li.L5,
+li.L6,
+li.L7,
+li.L8,
+li.L9 {
+    padding-left: 1em;
+    background-color: #fff;
+    list-style-type: decimal;
+}
+
+@media screen {
+
+    /* string content */
+
+    .str {
+        color: #d14;
+    }
+
+    /* keyword */
+
+    .kwd {
+        color: #333;
+    }
+
+    /* comment */
+
+    .com {
+        color: #998;
+    }
+
+    /* type name */
+
+    .typ {
+        color: #458;
+    }
+
+    /* literal value */
+
+    .lit {
+        color: #458;
+    }
+
+    /* punctuation */
+
+    .pun {
+        color: #333;
+    }
+
+    /* lisp open bracket */
+
+    .opn {
+        color: #333;
+    }
+
+    /* lisp close bracket */
+
+    .clo {
+        color: #333;
+    }
+
+    /* markup tag name */
+
+    .tag {
+        color: #000080;
+    }
+
+    /* markup attribute name */
+
+    .atn {
+        color: #008080;
+    }
+
+    /* markup attribute value */
+
+    .atv {
+        color: #d14;
+    }
+
+    /* declaration */
+
+    .dec {
+        color: #333;
+    }
+
+    /* variable name */
+
+    .var {
+        color: #008080;
+    }
+
+    /* function name */
+
+    .fun {
+        color: #900;
+    }
+}</style>
+
+<script>var logoUrl='https://image.freepik.com/free-icon/twitter-logo_318-40459.jpg' 
+var cards=[{"status":"passed","title":"some example specs passed","description":"passed","metadata":{"block":"#<Proc:0x007fc30dc1e0d0@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:5>","description_args":["passed"],"description":"passed","full_description":"some example specs passed","described_class":null,"file_path":"./spec/html/example_spec.rb","line_number":5,"location":"./spec/html/example_spec.rb:5","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb","rerun_file_path":"./spec/html/example_spec.rb","scoped_id":"1:1","execution_result":"#<RSpec::Core::Example::ExecutionResult:0x007fc30dc1de78>","example_group":{"block":"#<Proc:0x007fc30da73de8@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:3>","description_args":["some example specs"],"description":"some example specs","full_description":"some example specs","described_class":null,"file_path":"./spec/html/example_spec.rb","line_number":3,"location":"./spec/html/example_spec.rb:3","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb","rerun_file_path":"./spec/html/example_spec.rb","scoped_id":"1"},"shared_group_inclusion_backtrace":[],"someTag":"firstTAg","last_run_status":"unknown"}},{"status":"failed","title":"some example specs didn't pass","description":"\nexpected: 0\n     got: 1\n\n(compared using ==)\n","exception":"\nexpected: 0\n     got: 1\n\n(compared using ==)\n","backtrace":"/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-support-3.6.0/lib/rspec/support.rb:87:in `block in <module:Support>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-support-3.6.0/lib/rspec/support.rb:96:in `notify_failure'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/fail_with.rb:35:in `fail_with'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:38:in `handle_failure'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:50:in `block in handle_matcher'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:27:in `with_matcher'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:48:in `handle_matcher'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/expectation_target.rb:65:in `to'\n/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:38:in `block (2 levels) in <top (required)>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:254:in `instance_exec'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:254:in `block in run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:500:in `block in with_around_and_singleton_context_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:457:in `block in with_around_example_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/hooks.rb:464:in `block in run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/hooks.rb:602:in `run_around_example_hooks_for'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/hooks.rb:464:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:457:in `with_around_example_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:500:in `with_around_and_singleton_context_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:251:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:627:in `block in run_examples'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:623:in `map'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:623:in `run_examples'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:589:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:118:in `block (3 levels) in run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:118:in `map'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:118:in `block (2 levels) in run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/configuration.rb:1894:in `with_suite_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:113:in `block in run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/reporter.rb:79:in `report'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:112:in `run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:87:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:71:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:45:in `invoke'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/exe/rspec:4:in `<top (required)>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/rspec:22:in `load'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/rspec:22:in `<main>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `eval'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `<main>'","metadata":{"block":"#<Proc:0x007fc30dc1d838@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:9>","description_args":["didn't pass"],"description":"didn't pass","full_description":"some example specs didn't pass","described_class":null,"file_path":"./spec/html/example_spec.rb","line_number":9,"location":"./spec/html/example_spec.rb:9","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb","rerun_file_path":"./spec/html/example_spec.rb","scoped_id":"1:2","execution_result":"#<RSpec::Core::Example::ExecutionResult:0x007fc30dc1d658>","example_group":{"block":"#<Proc:0x007fc30da73de8@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:3>","description_args":["some example specs"],"description":"some example specs","full_description":"some example specs","described_class":null,"file_path":"./spec/html/example_spec.rb","line_number":3,"location":"./spec/html/example_spec.rb:3","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb","rerun_file_path":"./spec/html/example_spec.rb","scoped_id":"1"},"shared_group_inclusion_backtrace":[],"someTag":"secondTAg","crail_id":1234,"last_run_status":"unknown","reporter_images":[{"url":"http://via.placeholder.com/350x150","title":"The First Image","description":"The First Image Description"},{"url":"http://via.placeholder.com/350x150","title":"The Second Image","description":"The Second Image Description"}],"reporter_logs":[{"title":"Main Test Logs","url":"http://link-to-logs.txt"},{"title":"Second Test Logs","url":"http://link-to-logs.txt"}]}},{"status":"pending","title":"some example specs is pending","description":"is pending","metadata":{"block":"#<Proc:0x007fc30dc1d018@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:41>","description_args":["is pending"],"description":"is pending","full_description":"some example specs is pending","described_class":null,"file_path":"./spec/html/example_spec.rb","line_number":41,"location":"./spec/html/example_spec.rb:41","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb","rerun_file_path":"./spec/html/example_spec.rb","scoped_id":"1:3","execution_result":"#<RSpec::Core::Example::ExecutionResult:0x007fc30dc1ccf8>","example_group":{"block":"#<Proc:0x007fc30da73de8@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb:3>","description_args":["some example specs"],"description":"some example specs","full_description":"some example specs","described_class":null,"file_path":"./spec/html/example_spec.rb","line_number":3,"location":"./spec/html/example_spec.rb:3","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/example_spec.rb","rerun_file_path":"./spec/html/example_spec.rb","scoped_id":"1"},"shared_group_inclusion_backtrace":[],"last_run_status":"unknown","pending":true}},{"status":"passed","title":"some other example specs passed again","description":"passed again","metadata":{"block":"#<Proc:0x007fc30dc0d2f8@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:5>","description_args":["passed again"],"description":"passed again","full_description":"some other example specs passed again","described_class":null,"file_path":"./spec/html/second_example_spec.rb","line_number":5,"location":"./spec/html/second_example_spec.rb:5","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb","rerun_file_path":"./spec/html/second_example_spec.rb","scoped_id":"1:1","execution_result":"#<RSpec::Core::Example::ExecutionResult:0x007fc30dc0d028>","example_group":{"block":"#<Proc:0x007fc30dc0e720@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:3>","description_args":["some other example specs"],"description":"some other example specs","full_description":"some other example specs","described_class":null,"file_path":"./spec/html/second_example_spec.rb","line_number":3,"location":"./spec/html/second_example_spec.rb:3","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb","rerun_file_path":"./spec/html/second_example_spec.rb","scoped_id":"1"},"shared_group_inclusion_backtrace":[],"last_run_status":"unknown"}},{"status":"failed","title":"some other example specs didn't pass again","description":"\nexpected: 0\n     got: 1\n\n(compared using ==)\n","exception":"\nexpected: 0\n     got: 1\n\n(compared using ==)\n","backtrace":"/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-support-3.6.0/lib/rspec/support.rb:87:in `block in <module:Support>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-support-3.6.0/lib/rspec/support.rb:96:in `notify_failure'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/fail_with.rb:35:in `fail_with'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:38:in `handle_failure'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:50:in `block in handle_matcher'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:27:in `with_matcher'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/handler.rb:48:in `handle_matcher'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-expectations-3.6.0/lib/rspec/expectations/expectation_target.rb:65:in `to'\n/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:10:in `block (2 levels) in <top (required)>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:254:in `instance_exec'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:254:in `block in run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:500:in `block in with_around_and_singleton_context_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:457:in `block in with_around_example_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/hooks.rb:464:in `block in run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/hooks.rb:602:in `run_around_example_hooks_for'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/hooks.rb:464:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:457:in `with_around_example_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:500:in `with_around_and_singleton_context_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example.rb:251:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:627:in `block in run_examples'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:623:in `map'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:623:in `run_examples'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/example_group.rb:589:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:118:in `block (3 levels) in run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:118:in `map'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:118:in `block (2 levels) in run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/configuration.rb:1894:in `with_suite_hooks'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:113:in `block in run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/reporter.rb:79:in `report'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:112:in `run_specs'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:87:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:71:in `run'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/lib/rspec/core/runner.rb:45:in `invoke'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.6.0/exe/rspec:4:in `<top (required)>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/rspec:22:in `load'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/rspec:22:in `<main>'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `eval'\n/Users/amilyukov/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `<main>'","metadata":{"block":"#<Proc:0x007fc30dc0c830@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:9>","description_args":["didn't pass again"],"description":"didn't pass again","full_description":"some other example specs didn't pass again","described_class":null,"file_path":"./spec/html/second_example_spec.rb","line_number":9,"location":"./spec/html/second_example_spec.rb:9","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb","rerun_file_path":"./spec/html/second_example_spec.rb","scoped_id":"1:2","execution_result":"#<RSpec::Core::Example::ExecutionResult:0x007fc30dc0c240>","example_group":{"block":"#<Proc:0x007fc30dc0e720@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:3>","description_args":["some other example specs"],"description":"some other example specs","full_description":"some other example specs","described_class":null,"file_path":"./spec/html/second_example_spec.rb","line_number":3,"location":"./spec/html/second_example_spec.rb:3","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb","rerun_file_path":"./spec/html/second_example_spec.rb","scoped_id":"1"},"shared_group_inclusion_backtrace":[],"last_run_status":"unknown"}},{"status":"pending","title":"some other example specs is pending again","description":"is pending again","metadata":{"block":"#<Proc:0x007fc30dc07cb8@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:13>","description_args":["is pending again"],"description":"is pending again","full_description":"some other example specs is pending again","described_class":null,"file_path":"./spec/html/second_example_spec.rb","line_number":13,"location":"./spec/html/second_example_spec.rb:13","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb","rerun_file_path":"./spec/html/second_example_spec.rb","scoped_id":"1:3","execution_result":"#<RSpec::Core::Example::ExecutionResult:0x007fc30dc07ab0>","example_group":{"block":"#<Proc:0x007fc30dc0e720@/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb:3>","description_args":["some other example specs"],"description":"some other example specs","full_description":"some other example specs","described_class":null,"file_path":"./spec/html/second_example_spec.rb","line_number":3,"location":"./spec/html/second_example_spec.rb:3","absolute_file_path":"/Users/amilyukov/RubymineProjects/pretty_reports/example/spec/html/second_example_spec.rb","rerun_file_path":"./spec/html/second_example_spec.rb","scoped_id":"1"},"shared_group_inclusion_backtrace":[],"last_run_status":"unknown","pending":true}}]</script>
+
+<script type="text/babel">class TestCard extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            flipped: false
+        };
+        this.handleClick = this.handleClick.bind(this);
+        this.stateStatusToBootstrap = this.stateStatusToBootstrap.bind(this);
+    }
+
+    handleClick(){
+        console.log('Flip is fired!');
+        this.setState({flipped: !this.state.flipped})
+    }
+
+    stateStatusToBootstrap(){
+        switch(this.props.testData.status) {
+            case 'failed':
+                return 'danger';
+                break;
+            case 'passed':
+                return 'success';
+                break;
+            case 'pending':
+                return 'warning';
+                break;
+            default:
+                return 'info';
+        }
+    }
+
+    render() {
+        var title = <h3>{this.props.testData.title}
+                        <span className="case_id">Case id: <strong>{this.props.testData.metadata.crail_id || 'Unspecified'}</strong>
+
+                        </span>
+                    </h3>;
+        var statusClass = this.stateStatusToBootstrap();
+        let the_logs = this.props.testData.metadata.reporter_logs || [];
+        let the_images = this.props.testData.metadata.reporter_images || [];
+
+        return(
+            <div className="test_card">
+                <ReactBootstrap.Panel collapsible header={title} bsStyle={statusClass}>
+                    <ReactBootstrap.Collapse in={this.state.flipped}>
+                        <div>
+                            <QuickView toggler={this.handleClick} title={this.props.testData.title}
+                                       exception={this.props.testData.exception}
+                                       stackTrace={this.props.testData.backtrace}
+                            />
+                        </div>
+                    </ReactBootstrap.Collapse>
+
+                    <ReactBootstrap.Collapse in={!this.state.flipped}>
+                        <div>
+                            <DebugView toggler={this.handleClick}
+                                       images={the_images}
+                                       logs={the_logs}
+                            />
+                        </div>
+                    </ReactBootstrap.Collapse>
+                </ReactBootstrap.Panel>
+            </div>
+        )
+    }
+}
+class ImgCarousel extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: 0,
+            direction: null
+        };
+        this.handleSelect = this.handleSelect.bind(this);
+    }
+
+
+    handleSelect(selectedIndex, e) {
+        e.stopPropagation();
+        this.setState({
+            index: selectedIndex,
+            direction: e.direction
+        });
+    }
+
+    render() {
+        return(
+            (this.props.images.length == 0) ? (null) : (
+            <ReactBootstrap.Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
+                {this.props.images.map((entry,index) => {
+                    return(
+                        <ReactBootstrap.Carousel.Item key={index}>
+                            {console.log("Rendering with: " + entry)}
+                            <img width={900} height={500} alt="900x500" src={entry.url}/>
+                            <ReactBootstrap.Carousel.Caption>
+                                <h3>{entry.title}</h3>
+                                <p>{entry.description}</p>
+                            </ReactBootstrap.Carousel.Caption>
+                        </ReactBootstrap.Carousel.Item>
+                    )
+                })}
+            </ReactBootstrap.Carousel>
+        ));
+    }
+}
+class Logger extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            log: this.props.log
+        };
+    }
+
+    render() {
+        return(
+        <div className="logger">
+            {console.log("THE LOG: " + this.state.log.url)}
+            <ReactBootstrap.Button
+                href={this.state.log.url}
+                bsStyle="primary"
+                onClick={this.showLogs}
+            >
+                Show Logs {this.state.log.title}
+            </ReactBootstrap.Button>
+        </div>
+        );
+    }
+}
+
+
+
+
+
+
+
+
+
+
+class Logo extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            logo_src: props.logo_src || 'http://sites.seizethemarket.com/site-files/9/cms/26/photo-1.jpg',
+            name: props.name || 'Pretty Reporter'
+        }
+    }
+
+
+    render() {
+        return(
+            <ReactBootstrap.Grid>
+                <ReactBootstrap.Row>
+                    <ReactBootstrap.Col lg={4} md={4} xs={4} lgOffset={4} mdOffset={4} xsOffset={4}>
+                        <img className="logo" src={this.state.logo_src}/>
+                    </ReactBootstrap.Col>
+                </ReactBootstrap.Row>
+            </ReactBootstrap.Grid>
+        )
+    }
+}class QuickView extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    render() {
+        return(
+            <div className="quick_view" onClick={this.props.toggler}>
+                <ReactBootstrap.Well>
+                    <pre className="prettyprint">
+                        {this.props.exception}
+                    </pre>
+                </ReactBootstrap.Well>
+
+                <div className="stack-trace-box">
+                    <p className="stack-trace">
+                        {this.props.stackTrace}
+                    </p>
+                </div>
+            </div>
+        );
+    }
+}
+class DebugView extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
+
+    render() {
+        return(
+            <div onClick={this.props.toggler}>
+                <div>Debug view.</div>
+                <ReactBootstrap.Row>
+                    <ReactBootstrap.Col md={8} mdOffset={2}>
+                        <ImgCarousel images={this.props.images || []} />
+                    </ReactBootstrap.Col>
+                </ReactBootstrap.Row>
+
+
+                {this.props.logs.map((entry,index) => {
+                    return(
+                        <ReactBootstrap.Row className="log_row">
+                            <ReactBootstrap.Col md={6} mdOffset={3}>
+                                <Logger key={index} log={entry}/>
+                            </ReactBootstrap.Col>
+                        </ReactBootstrap.Row>
+                    )
+                })}
+            </div>
+        );
+    }
+}
+class TestsContainer extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    render() {
+        return(
+            <div className="allContent">
+                <ReactBootstrap.PanelGroup>
+                    {console.log("Rendering cards within TestContainer: " + (this.props.testCards.map((entry) => {return entry.title})))}
+                    {this.props.testCards.map((entry,index) => {
+                        return <TestCard key={index} testData={entry} />
+                    })}
+                </ReactBootstrap.PanelGroup>
+            </div>
+        );
+    }
+}
+class App extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            testCards: cards,
+            showFailed: true,
+            showPending: true,
+            showPassed: true
+        };
+        this.toggleFailed = this.toggleFailed.bind(this);
+        this.togglePending = this.togglePending.bind(this);
+        this.togglePassed = this.togglePassed.bind(this);
+    }
+
+    toggleFailed(){
+        this.setState({showFailed: !this.state.showFailed});
+    }
+
+    togglePending(){
+        this.setState({showPending: !this.state.showPending});
+    }
+
+    togglePassed(){
+        this.setState({showPassed: !this.state.showPassed});
+    }
+
+    render() {
+
+        const logo = "https://crunchbase-production-res.cloudinary.com/image/upload/c_limit,h_600,w_600/v1453924600/tmmdxp5a13bemgsrqkce.png";
+        const name = 'Branch';
+
+        //Cards comes from external script
+        const all_tests = this.state.testCards;
+        let passed_tests = [];
+        let failed_tests = [];
+        let pending_tests = [];
+        let testsToShow = [];
+
+        cards.map((entry, index) => {
+            if(entry.status == 'passed'){
+                passed_tests.push(entry)
+            }
+            else if(entry.status == 'failed'){
+                failed_tests.push(entry)
+            }
+            else if(entry.status == 'pending'){
+                pending_tests.push(entry)
+            }
+        });
+
+        if(this.state.showFailed){
+            testsToShow = testsToShow.concat(failed_tests)
+        }
+        if(this.state.showPending){
+            testsToShow = testsToShow.concat(pending_tests)
+        }
+        if(this.state.showPassed){
+            testsToShow = testsToShow.concat(passed_tests)
+        }
+
+        {console.log("Number of tests: " + all_tests.length)}
+        {console.log("Number of passed tests: " + passed_tests.length)}
+        {console.log("Number of failed tests: " + failed_tests.length)}
+        {console.log("Number of pending tests: " + pending_tests.length)}
+        {console.log("Tests to show: " + testsToShow)}
+
+
+
+        return(
+            <div className="the_app">
+                <ReactBootstrap.Grid>
+                    <ReactBootstrap.Row>
+                        <Logo name={name} logo_src={logo} />
+                    </ReactBootstrap.Row>
+
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col md={12} lg={12}>
+                            <ReactBootstrap.ProgressBar>
+                                <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-success
+                                                            ${(this.state.showPassed) ? (null) : ('unselected')}`}
+                                                            onClick={this.togglePassed}
+                                                            now={passed_tests.length/(all_tests.length/100)}
+                                                            label={`Passing: ${passed_tests.length}`}/>
+
+                                <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-warning
+                                                            ${(this.state.showPending) ? (null) : ('unselected')}`}
+                                                            onClick={this.togglePending}
+                                                            now={pending_tests.length/(all_tests.length/100)}
+                                                            label={`Pending: ${passed_tests.length}`}/>
+
+                                <ReactBootstrap.ProgressBar bsClass={`progress-bar progress-bar-danger
+                                                            ${(this.state.showFailed) ? (null) : ('unselected')}`}
+                                                            onClick={this.toggleFailed}
+                                                            now={failed_tests.length/(all_tests.length/100)}
+                                                            label={`Failed: ${passed_tests.length}`}/>
+                            </ReactBootstrap.ProgressBar>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>
+
+                    {console.log("The rendering test cards in App: " + this.state.testCards)}
+                    <TestsContainer testCards={testsToShow}/>
+                </ReactBootstrap.Grid>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<App />, document.getElementById("app"));
+</script>
+
+
+<div id="app">
+    <!--Content goes here-->
+</div>
+</body>
+</html>
