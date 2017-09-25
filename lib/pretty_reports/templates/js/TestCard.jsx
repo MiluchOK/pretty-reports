@@ -43,7 +43,7 @@ class TestCard extends React.Component {
         return(
             <div className="test_card">
                 <ReactBootstrap.Panel collapsible header={title} bsStyle={statusClass}>
-                    <ReactBootstrap.Collapse in={this.state.flipped}>
+                    <ReactBootstrap.Collapse in={!this.state.flipped}>
                         <div>
                             <QuickView toggler={this.handleClick} title={this.props.testData.title}
                                        exception={this.props.testData.exception}
@@ -52,7 +52,7 @@ class TestCard extends React.Component {
                         </div>
                     </ReactBootstrap.Collapse>
 
-                    <ReactBootstrap.Collapse in={!this.state.flipped}>
+                    <ReactBootstrap.Collapse in={this.state.flipped}>
                         <div>
                             <DebugView toggler={this.handleClick}
                                        images={the_images}
