@@ -60,6 +60,7 @@ class TestCard extends React.Component {
                             <QuickView toggler={this.handleClick} title={this.props.testData.title}
                                        exception={this.props.testData.exception}
                                        stackTrace={this.props.testData.backtrace}
+                                       location={this.props.testData.location}
                             />
                         </div>
                     </ReactBootstrap.Collapse>

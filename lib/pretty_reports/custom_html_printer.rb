@@ -27,6 +27,7 @@ class CustomHtmlPrinter
                     status: 'passed',
                     title: passed.example.full_description,
                     description: passed.example.description,
+                    location: passed.example.location,
                     metadata: passed.example.metadata
                 }
     write_html_to_output
@@ -38,6 +39,7 @@ class CustomHtmlPrinter
                     status: 'pending',
                     title: pending.example.full_description,
                     description: pending.example.description,
+                    location: pending.example.location,
                     metadata: pending.example.metadata
                 }
     write_html_to_output
@@ -49,6 +51,7 @@ class CustomHtmlPrinter
         status: 'failed',
         title: failure.example.full_description,
         description: failure.example.execution_result.exception.to_s,
+        location: failure.example.location,
         exception: failure.exception,
         backtrace: failure.exception.backtrace.join("\n"),
         metadata: failure.example.metadata

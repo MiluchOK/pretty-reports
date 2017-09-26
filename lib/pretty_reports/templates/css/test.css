@@ -52,3 +52,9 @@ div.progress-bar.unselected {
 .panel-title  {
     word-break:break-all
 }
+
+div.spec-name {
+    margin: 5px;
+    text-align: center;
+    margin-bottom: 15px;
+}
