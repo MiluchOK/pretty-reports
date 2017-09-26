@@ -48,3 +48,7 @@ div.progress-bar.unselected {
     filter: brightness(85%);
     box-shadow: inset 0px 0px 20px -4px rgba(0,0,0,0.6);
 }
+
+.panel-title  {
+    word-break:break-all
+}

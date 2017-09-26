@@ -38,6 +38,14 @@ describe "some example specs" do
     expect(1).to eq 0
   end
 
+  it 'the failing one with Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong name' do
+    1/0
+  end
+
+  it 'some example specs the failing one with Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooo' do
+    1/0
+  end
+
   it 'is pending' do
     pending 'the test is lOKO'
     1/0

@@ -31,11 +31,23 @@ class TestCard extends React.Component {
     }
 
     render() {
-        var title = <h3>{this.props.testData.title}
+        var title = (
+            <div className="sdfsdfsdfsdf">
+                <ReactBootstrap.Row>
+                    <ReactBootstrap.Col md={10}>
+                        <h3 className="panel-title">
+                            {this.props.testData.title}
+                        </h3>
+                    </ReactBootstrap.Col>
+                    <ReactBootstrap.Col md={2}>
                         <span className="case_id">Case id: <strong>{this.props.testData.metadata.crail_id || 'Unspecified'}</strong>
-
                         </span>
-                    </h3>;
+                    </ReactBootstrap.Col>
+                </ReactBootstrap.Row>
+            </div>
+        );
+
+
         var statusClass = this.stateStatusToBootstrap();
         let the_logs = this.props.testData.metadata.reporter_logs || [];
         let the_images = this.props.testData.metadata.reporter_images || [];
